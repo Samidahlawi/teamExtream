@@ -74,7 +74,8 @@ void encryption(string massage,int key){
     for(int index = 0; index < massage.size() ; index++){ 
         for(int p = 0 ; p < 25 ; p++){
             if(massage[index] == letters[p]){
-                cipher += letters[p+key];
+                int position = (p+key) % 26;
+                cipher += letters[position];
                 check_letter++;
             }
         }       
