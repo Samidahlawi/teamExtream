@@ -32,8 +32,8 @@ int cipher(string );
 
 int main(){
     
-    string d = "ddd"
-    cout >> d;
+    string d = "ddd";
+    cout << d;
     return 0;
 }
 
