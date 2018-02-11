@@ -80,7 +80,10 @@ void encryption(string massage,int key){
         }       
     }
     
-//    if(check_letter == massage.size()){}else{}
+    if(check_letter == massage.size()){
     cout << "completed the encryption of massage" << "... "  << endl;
     cout << "Cipher is : \"" << cipher << "\""<< endl;
+    }else{
+        cout << "Sorry, connot encryption must all massage contain only English letters" << endl;
+    }
 }
