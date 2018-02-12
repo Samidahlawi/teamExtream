@@ -25,30 +25,30 @@
 
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 
 
 void encryption(string massage,int key);//take the massage and key
 int decryption(string massage); // take the massage then guess the key. int because return the key
+
 int main(){
     
     string msg;
     int choose;
-    int key;
+    int key = 0;
     cout << "   >>> Welcome to 'Caesar Cipher' application <<<  " << endl;
-    cout << "What do you like?" << endl;
-    cout << "1) Encryption the your massage " << endl 
-         << "2) Decryption your massage" << endl;
+    cout << "1) Encryption the your massage " << endl << "2) Decryption your massage" << endl << ">> ";
     cin >> choose;
- 
+    
     if(choose == 1){
-        cout << "Place enter your massage:" << endl;
-        cin >> msg;
-        cout << "Place enter the key of massage: " << endl;
-        cin >> key;
+        cout << "Place enter your massage:" << endl << ">> "; 
+        cin.ignore();
+        getline(cin,msg);
+        cout << "Place enter the key of massage:" << endl << ">> ";
+	cin >> key;
         encryption(msg,key);
-        
     }else if(choose == 2){
         
         // Nawaf you have to write the function of decryption here. "work hard play hard" (;
@@ -68,23 +68,25 @@ void encryption(string massage,int key){
     //                   0   1   2   3   4   5   6   7   8   9  10   11  12  13  14  15  16  17  18 19  20  21  22  23  24  25
     char letters[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     int k = key; // k is key
-    string cipher = ""; // cipher
-    int check_letter = 0;
+    string cipher; // cipher
     
     for(int index = 0; index < massage.size() ; index++){ 
-        for(int p = 0 ; p < 25 ; p++){
-            if(massage[index] == letters[p]){
-                int position = (p+key) % 26;
-                cipher += letters[position];
-                check_letter++;
+        if((massage[index] >= 'a' && massage[index] <= 'z') || (massage[index] >= 'A' && massage[index] <= 'Z')){
+            for(int p = 0 ; p < 25 ; p++){
+                if(massage[index] == letters[p]){
+                    int position = (p+key) % 26;
+                    cipher += letters[position]-32; // -32 to make letter capital by ASCII code         
+                }
             }
-        }       
+        }else if(massage[index] == ' ' || massage[index] == '\0'){
+            cipher += massage[index];
+        }else {
+            //cipher += massage[index]; 
+            continue;               //skip all character not letter && not space
+        }
     }
     
-    if(check_letter == massage.size()){
     cout << "completed the encryption of massage" << "... "  << endl;
     cout << "Cipher is : \"" << cipher << "\""<< endl;
-    }else{
-        cout << "Sorry, connot encryption must all massage contain only English letters" << endl;
-    }
+
 }
