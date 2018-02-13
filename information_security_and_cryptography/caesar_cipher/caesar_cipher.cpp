@@ -19,7 +19,7 @@
 //    Created by:
 //    -Wayfarer
 //    -the-7-hunter
-//     comments 
+//     comments
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
@@ -89,4 +89,28 @@ void encryption(string massage,int key){
     cout << "completed the encryption of massage" << "... "  << endl;
     cout << "Cipher is : \"" << cipher << "\""<< endl;
 
+}
+void decryption(string massage){
+
+char letters[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    string plain; // plain
+    int force = 5;
+  for(int index = 0; index < massage.size() ; index++){
+        if((massage[index] >= 'a' && massage[index] <= 'z') || (massage[index] >= 'A' && massage[index] <= 'Z')){
+                for(int c = 0; c <= 25; c++){
+                    if(massage[index] == letters[c]){
+                    int position = (c - force) % 26;
+                    plain += letters[position];
+         }
+         }
+
+        }else if(massage[index] == ' ' || massage[index] == '\0'){
+            plain += massage[index];
+        }else {
+            //cipher += massage[index];
+            continue;               //skip all character not letter && not space
+        }
+
+        }
+cout <<"Assuming Key = "<<force<<" "<<"message might be .. << "<<plain<<" >>"<<endl;
 }
