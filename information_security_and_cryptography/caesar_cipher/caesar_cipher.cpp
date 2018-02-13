@@ -109,8 +109,12 @@ string plain;
         if((massage[index] >= 'a' && massage[index] <= 'z') || (massage[index] >= 'A' && massage[index] <= 'Z')){
                 for(int c = 0; c <= 25; c++){
                     if(massage[index] == letters[c]){
-                    int position = (c - force) % 26;
-                    plain += letters[position];
+                      int position = (c - force);
+                      if (position < 0){
+                        (position += 26) % 26;;
+                      }
+                      else{
+                        position = position % 26;}
          }
          }
 
