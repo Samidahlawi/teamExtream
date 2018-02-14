@@ -115,6 +115,7 @@ string plain;
                       }
                       else{
                         position = position % 26;}
+                        plain += letters[position];
          }
          }
 
