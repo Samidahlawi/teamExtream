@@ -111,7 +111,7 @@ string plain;
                     if(massage[index] == letters[c]){
                       int position = (c - force);
                       if (position < 0){
-                        (position += 26) % 26;;
+                        (position += 26) % 26;
                       }
                       else{
                         position = position % 26;}
