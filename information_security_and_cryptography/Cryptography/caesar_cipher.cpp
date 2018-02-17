@@ -50,7 +50,10 @@ int main(){
 	cin >> key;
         encryption(msg,key);
     }else if(choose == 2){
-
+        cout << "Place enter your massage:" << endl << ">> ";
+        cin.ignore();
+        getline(cin,msg);
+        decryption(msg);
         // Nawaf you have to write the function of decryption here. "work hard play hard" (;
 
     }else{
@@ -111,7 +114,7 @@ string plain;
                     if(massage[index] == letters[c]){
                       int position = (c - force);
                       if (position < 0){
-                        (position += 26) % 26;
+                        position = (position+26) % 26;
                       }
                       else{
                         position = position % 26;}
